@@ -4,28 +4,13 @@ import ComingSoon from "./componants/coming-soon";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [typedText, setTypedText] = useState("");
-  const fullText = "Coming Soon";
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 3000);
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    if (!isLoading) {
-      let index = 0;
-      const typingInterval = setInterval(() => {
-        if (index < fullText.length) {
-          setTypedText((prev) => prev + fullText[index]);
-          index++;
-        } else {
-          clearInterval(typingInterval);
-        }
-      }, 75);
-      return () => clearInterval(typingInterval);
-    }
-  }, [isLoading]);
+
 
   return (
     <div className="min-h-screen bg-black text-white">
